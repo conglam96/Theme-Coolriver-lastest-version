@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <body>
+
+    <referenceBlock name="logo">
+      <arguments>
+          <argument name="logo_file" xsi:type="string">images/header/Logo_icon.svg</argument>
+          <argument name="logo_alt" xsi:type="string"></argument>
+          <argument name="logo_img_width" xsi:type="number">198</argument>
+          <argument name="logo_img_height" xsi:type="number">66</argument>
+      </arguments>
+    </referenceBlock>
+    
+    <referenceContainer name="header.panel" remove="true"/>
+    <referenceBlock name="footer_links" remove="true" />
+    <referenceBlock name="copyright" remove="true" />
+    <referenceBlock name="report.bugs" remove="true" />
+    <referenceBlock name="advanced-search-link" remove="true"/>
+    <move element="minicart" destination="header-bottom" before="header_account"/>
+    <move element="account_links" destination="header-wrapper" after="wishlist_links"/>
+    <move element="navigation.sections" destination="header-bottom" before="-"/>
+    <move element="form.subscribe" destination="footer-container" before="-"/>
+    <referenceContainer name="header.container">
+      <block class="Magento\Cms\Block\Block" name="header-top" before="-">
+        <arguments>
+          <argument name="block_id" xsi:type="string">header-top</argument>
+        </arguments>
+      </block>
+    </referenceContainer>
+    <referenceContainer name="header-wrapper">
+      <block class="Magento\Cms\Block\Block" name="header-phone" after="-">
+        <arguments>
+          <argument name="block_id" xsi:type="string">header-phone</argument>
+        </arguments>
+      </block> 
+    </referenceContainer>
+    <referenceContainer name="page.top">
+      <container name="header-bottom-wrapper" htmlClass="header-bottom-wrapper" htmlTag="div">
+        <container name="header-bottom" htmlClass="header-bottom" htmlTag="div">
+          <block class="Magento\Framework\View\Element\Template" name="header_account" template="Magento_Theme::html/header_account.phtml" before="minicart"/>
+        </container>
+      </container>
+    </referenceContainer>
+    <referenceBlock name="store.menu">
+      <block class="Magento\Cms\Block\Block" name="content-mobile" after="catalog.topnav">
+        <arguments>
+          <argument name="block_id" xsi:type="string">content-mobile</argument>
+        </arguments>
+      </block>
+    </referenceBlock>
+    <!-- footer --> 
+    <referenceContainer name="footer">
+      <container name="footer-wrapper" htmlClass="footer-wrapper" htmlTag="div">
+        <container name="footer-wrapper-content" htmlClass="footer-wrapper-content" htmlTag="div">
+          <container name="footer-top" htmlClass="footer-top" htmlTag="div">
+            <block class="Magento\Cms\Block\Block" name="cms.block.footer.top" >
+              <arguments>
+                <argument name="block_id" xsi:type="string">footer-top</argument>
+              </arguments>
+            </block>
+          </container>
+          <container name="footer-menu" htmlClass="footer-menu" htmlTag="div">
+            
+            <block class="Magento\Cms\Block\Block" name="cms.block.footer.service">
+              <arguments>
+                <argument name="block_id" xsi:type="string">footer-coolriver</argument>
+              </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="cms.block.footer.payment">
+              <arguments>
+                <argument name="block_id" xsi:type="string">footer-customer-support</argument>
+              </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="cms.block.footer.order">
+              <arguments>
+                <argument name="block_id" xsi:type="string">footer-terms-privacy</argument>
+              </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="cms.block.footer.accept">
+              <arguments>
+                <argument name="block_id" xsi:type="string">footer_we_accept</argument>
+              </arguments>
+            </block>
+          </container>                
+        </container>
+      </container>
+    </referenceContainer>
+    <referenceContainer name="footer-container">
+      <container name="footer-copyright" htmlClass="footer-copyright" htmlTag="div">
+        <block class="Magento\Cms\Block\Block" name="cms.block.footer.copyright">
+          <arguments>
+            <argument name="block_id" xsi:type="string">footer-copyright</argument>
+          </arguments>
+        </block>
+      </container>
+    </referenceContainer>
+  </body>
+</page>

@@ -1,0 +1,57 @@
+<div class="top header-top">
+	<div class="group-2 header-top-container">
+		<div class="header-top-content our-promise">
+			<img src="<?= $block->escapeUrl($block->getViewFileUrl('images/header/ourpromise.jpg')); ?>" alt="#"  />
+			<p>Our Promise</p>
+		</div>
+		<div class="header-top-content free-ship">
+			<img src="<?= $block->escapeUrl($block->getViewFileUrl('images/header/shipping_icon.png')); ?>" alt="#"  />
+			<p>Free shipping on orders over $100</p>
+		</div>
+		<div class="header-top-content products">
+			<img src="<?= $block->escapeUrl($block->getViewFileUrl('images/header/aus_icon.png')); ?>" alt="#"  />
+			 <p>Australian Products</p>
+		</div>
+		<div class="header-top-content lowest-price">
+			<img src="<?= $block->escapeUrl($block->getViewFileUrl('images/header/dollar_icon.png')); ?>" alt="#"  />
+			<p>Lowest Price Guarantee</p>
+		</div>
+
+		<div class="header-top-content easy">
+			<img src="<?= $block->escapeUrl($block->getViewFileUrl('images/header/returns_icon.png')); ?>" alt="#"  />
+			<p>Easy, Simple Returns</p>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	require(['jquery','owlCarousel'], function ($) {
+		if($(window).width() <= 767){
+			$('.header-top-container').addClass('owl-carousel');
+
+			$('.header-top-content').addClass('item');
+
+			 $(".owl-carousel").owlCarousel({
+		     
+		      nav:false, // Show next and prev buttons
+		      slideSpeed : 300,
+		      paginationSpeed : 400,
+		      singleItem:true,
+		      items:1,
+		      navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
+		      loop:true
+		      
+		      
+		      // "singleItem:true" is a shortcut for:
+		      // items : 1, 
+		      // itemsDesktop : false,
+		      // itemsDesktopSmall : false,
+		      // itemsTablet: false,
+		      // itemsMobile : false
+		      
+		    });
+
+		}
+  });
+</script>

@@ -1,0 +1,25 @@
+<?php
+/** @var \Convert\Theme\Helper\Data $helper */
+$helper = $this->helper('Convert\Theme\Helper\Data');
+$customerSession = $helper->getCustomerSession();
+?>
+<div class="account <?php echo $block->getData('class'); ?>" data-mage-init='{"collapsible":{"openedState": false, "saveState": false}}'>
+    <div class="title" data-role="title">
+        <img src="<?php echo $this->getViewFileUrl('images/account_icon.png') ?>" data-rjs="<?php echo $this->getViewFileUrl('images/retina/account@2x.png') ?>" alt="<?php echo __('Account') ?>">
+        <span><?php echo __('Account') ?></span>
+    </div>
+    <div style="display:none;" class="submenu content" data-role="content" aria-labelledby="block-account-heading">
+    <?php if($customerSession->isLoggedIn()): ?>
+        <ul>
+            <li><a href="<?php echo $this->getUrl('customer/account') ?>"><?php echo __('My Account'); ?></a></li>
+            <li><a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo __('My Orders'); ?></a></li>
+            <li><a href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Sign Out'); ?></a></li>
+        </ul>
+    <?php else: ?>
+       <ul>
+           <li><a href="<?php echo $this->getUrl('customer/account/login'); ?>">Login</a></li>
+           <li><a href="<?php echo $this->getUrl('customer/account/create'); ?>">Register</a></li>
+       </ul>
+    <?php endif; ?>
+    </div>    
+</div>
